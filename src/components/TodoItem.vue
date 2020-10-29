@@ -1,7 +1,10 @@
 <template>
   <li>
     <span v-bind:class="{done: todo.completed}"><!--включает класс .done если todo.completed = true -->
-      <input type="checkbox" v-on:change="todo.completed = !todo.completed"><!--изменяем значение todo.completed в зависимости от состояния чекбокса-->
+      <input type="checkbox"
+             v-on:change="todo.completed = !todo.completed"
+             v-bind:checked="todo.completed === true"
+      ><!--изменяем значение todo.completed в зависимости от состояния чекбокса-->
       <strong>{{ index + 1 }}</strong>
       {{ todo.title }}
     </span>

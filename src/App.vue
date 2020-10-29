@@ -19,9 +19,10 @@ export default {
   data(){
     return{
       todos: [
-        {id:1, title: "Купить хлеб", completed: false},
-        {id:2, title: "Купить молоко", completed: false},
-        {id:3, title: "Купить масло", completed: false},
+          //вместо наших данных вставляюся данные из json
+      //   {id:1, title: "Купить хлеб", completed: false},
+      //   {id:2, title: "Купить молоко", completed: false},
+      //   {id:3, title: "Купить масло", completed: false},
       ]
     }
   },
@@ -29,9 +30,11 @@ export default {
     TodoList, AddTodo
   },
   mounted() {
-    fetch('https://jsonplaceholder.typicode.com/todos')
+    fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
         .then(response => response.json())
-        .then(json => console.log(json))
+        .then(json => {
+          this.todos = json
+        })
   },
   methods: {
     removeTodo(id){
