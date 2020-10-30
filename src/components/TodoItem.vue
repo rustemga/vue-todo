@@ -6,7 +6,7 @@
              v-bind:checked="todo.completed === true"
       ><!--изменяем значение todo.completed в зависимости от состояния чекбокса-->
       <strong>{{ index + 1 }}</strong>
-      {{ todo.title }}
+      {{ todo.title | uppercase }}
     </span>
     <button class="rm"
             v-on:click="$emit('remove-todo', todo.id)"
@@ -23,6 +23,11 @@ export default {
       required: true
     },
     index: Number
+  },
+  filters:{//Испльзуется ждя трансформации данных
+    uppercase(value){//фильтр метод исполь зуется в шаблоне через знак "|"
+      return value.charAt(0).toUpperCase()+value.slice(1)
+    }
   }
 }
 </script>
