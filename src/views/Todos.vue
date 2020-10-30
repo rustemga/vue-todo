@@ -13,8 +13,8 @@
     <hr>
     <Loader v-if="loading"/>
     <TodoList
-        v-else-if="todos.length"
-        v-bind:todos="todos"
+        v-else-if="filteredTodos.length"
+        v-bind:todos="filteredTodos"
         @remove-todo="removeTodo"
     /><!--@ заменяет v-on-->
     <p v-else>No todos :(</p>
@@ -59,7 +59,7 @@ export default {
     }
   },
   computed:{// в этом поле можно заводить любые функции
-    filteredTodos(){
+    filteredTodos() {
       if(this.filter === 'all'){
         return this.todos
       }
@@ -69,6 +69,7 @@ export default {
       if(this.filter === 'not-completed'){
         return this.todos.filter(t => !t.completed)
       }
+      return this.todos
     }
   },
   methods: {
